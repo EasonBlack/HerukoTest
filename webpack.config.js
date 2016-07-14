@@ -1,9 +1,11 @@
 module.exports = {
     entry: "./client/app.js",
     output: {
-        path: "./build",
-        filename: "bundle.js"
+        path: './build',
+        filename: 'bundle.js',
+        publicPath: '/build'
     },
+    devtool: 'inline-source-map',
     module: {
         loaders: [
             {
