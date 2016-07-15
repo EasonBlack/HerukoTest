@@ -20,6 +20,16 @@ app.get('/',function (req, res) {
 });
 
 
+app.get('/getitems',function(req,res){
+    var client = new pg.Client(process.env.DATABASE_URL);
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query('SELECT * FROM test1', function(err, result) {
+            done();
+            res.send(result);
+        });
+    });
+})
+
 app.get('/db', function (request, response) {
     var client = new pg.Client(process.env.DATABASE_URL);
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
