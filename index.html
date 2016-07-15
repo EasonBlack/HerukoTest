@@ -5,8 +5,18 @@
     <title></title>
 </head>
 <body ng-app="app" ng-controller="appCtrl">
-  <div>hh</div>
-  <div>{{message}}</div>
+   <div>hh</div>
+   <div>{{message}}</div>
+   <ul>
+       <li ng-repeat="item in items">
+           {{item.name}}
+       </li>
+   </ul>
+   <hr>
+   <div>
+       <input ng-model="content" type="text">
+       <button ng-click="add()">Add</button>
+   </div>
 </body>
 <script src="/bundle.js"></script>
 
