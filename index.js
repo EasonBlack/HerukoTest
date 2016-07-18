@@ -11,35 +11,35 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.listen(app.get('port'), function(){
+app.listen(app.get('port'), function () {
     console.log('connect success!');
 });
 
-app.get('/',function (req, res) {
+app.get('/', function (req, res) {
     res.sendfile('./index.html');
 });
 
 //success
-app.get('/getitems',function(req,res){
+app.get('/getitems', function (req, res) {
     var client = new pg.Client(process.env.DATABASE_URL);
-    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-        client.query('SELECT * FROM test1', function(err, result) {
+    pg.connect(process.env.DATABASE_URL, function (err, client, done) {
+        client.query('SELECT * FROM test1', function (err, result) {
             done();
             res.send(result.rows);
         });
     });
 })
 
-app.post('/additem',function(req, res){
+app.post('/additem', function (req, res) {
     var text = req.param('text');
     var _rows = [];
     //res.send(text);
     var client = new pg.Client(process.env.DATABASE_URL);
-    var insertquery = client.query('INSERT INTO test1(text) values($1)', [text]);
+    var insertquery = client.query("insert into test1(text) values('" + text + "')");
     insertquery.on("end", function (result) {
         client.end();
         res.write('Success');
         res.end();
     });
-    
+
 });
