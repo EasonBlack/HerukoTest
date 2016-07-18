@@ -35,6 +35,7 @@ app.post('/additem', function (req, res) {
     var _rows = [];
     //res.send(text);
     var client = new pg.Client(process.env.DATABASE_URL);
+    client.connect();
     var insertquery = client.query("insert into test1 (text) values ('" + text + "')");
     insertquery.on("end", function (result) {
         done();
