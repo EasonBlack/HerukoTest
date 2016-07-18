@@ -11,10 +11,10 @@ angular.module('app', [])
 
 
         $scope.add = ()=> {
-            console.log($scope.content);
-            $http.post('/add', {text: $scope.content}, function (res) {
-                console.log(res);
-            });
+            $http.post('/additem', {text: $scope.content})
+                .then((res)=> {
+                    console.log(res);
+                })
         }
 
     }])
