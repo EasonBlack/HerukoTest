@@ -6,8 +6,7 @@ angular.module('app', [])
 
         $http.get('/getitems')
             .then((res) => {
-                console.log(res);
-                $scope.items = res;
+                $scope.items = res.data;
             })
 
 
