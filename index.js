@@ -32,7 +32,7 @@ app.get('/getitems',function(req,res){
 
 app.post('/additem',function(req, res){
     var text = req.param('text');
-    res.send('xxxxxxxxx');
+    res.send(text);
     //var client = new pg.Client(process.env.DATABASE_URL);
     //client.query("INSERT INTO test1(text) values($1)", [text]);
     //client.query('SELECT * FROM test1', function(err, result) {
