@@ -38,8 +38,10 @@ app.post('/additem', function (req, res) {
     client.connect();
     var insertquery = client.query("insert into test1 (text) values ('" + text + "')");
     insertquery.on("end", function (result) {
-        done();
-        res.send('Success');
+        client.query('SELECT * FROM test1', function (err, result) {
+            client.end();
+            res.send(result.rows);
+        });
     });
 
 });
