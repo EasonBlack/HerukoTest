@@ -13,7 +13,7 @@ angular.module('app', [])
         $scope.add = ()=> {
             $http.post('/additem', {text: $scope.content})
                 .then((res)=> {
-                    console.log(res);
+                    $scope.items = res.data;
                 })
         }
 
