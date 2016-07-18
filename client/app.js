@@ -2,7 +2,7 @@
 
 angular.module('app', [])
     .controller('appCtrl', ['$scope', '$http', function ($scope, $http) {
-        $scope.message = 'xxxd fd ddfdfd fdf';
+        $scope.message = 'Hello World';
 
         $http.get('/getitems')
             .then((res) => {
