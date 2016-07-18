@@ -32,11 +32,14 @@ app.get('/getitems',function(req,res){
 
 app.post('/additem',function(req, res){
     var text = req.param('text');
-    res.send(text);
-    //var client = new pg.Client(process.env.DATABASE_URL);
-    //client.query("INSERT INTO test1(text) values($1)", [text]);
-    //client.query('SELECT * FROM test1', function(err, result) {
-    //    done();
-    //    res.send(result.rows);
-    //});
+    var _rows = [];
+    //res.send(text);
+    var client = new pg.Client(process.env.DATABASE_URL);
+    var insertquery = client.query('INSERT INTO test1(text) values($1)', [text]);
+    insertquery.on("end", function (result) {
+        client.end();
+        res.write('Success');
+        res.end();
+    });
+    
 });
