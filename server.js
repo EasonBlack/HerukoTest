@@ -38,8 +38,6 @@ app.get('/getitems', function (req, res) {
 app.post('/login', function (req, res) {
     var name = req.body.name;
     var password = req.body.password;
-    console.log('name', name, req.param('name'));
-    console.log('pwd', password);
     var query = "select * from user_account where name='" + name + "' and password='" + password + "'";
     var client = new pg.Client(process.env.DATABASE_URL);
     pg.connect(process.env.DATABASE_URL, function (err, client, done) {
@@ -47,7 +45,7 @@ app.post('/login', function (req, res) {
             done();
             if(result.rows.length) {
                 //res.send('Success');
-                res.sendfile('./client/index.html');
+                res.redirect('/main');
             } else {
                 res.send('Login Failed');
             }
