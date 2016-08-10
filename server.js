@@ -52,15 +52,14 @@ app.post('/answer', function (req, res) {
     var username = req.body.username;
     var content = req.body.content;
     console.log(username);
-
-    var _content = content.reduce((str, o, i)=>{
+    var _content = '';
+    content.forEach(function(item,i){
         if(!i) {
-            str +=  '\'' + o +  '\'';
+            _content +=  '\'' + item +  '\'';
         }  else {
-            str +=  ',\'' + o +  '\'';
+            _content +=  ',\'' + item +  '\'';
         }
-
-    }, '');
+    })
     console.log(_content);
     var insert = `insert into answer(username, content) values('${username}',ARRAY[${_content}])`;
     console.log(insert);
