@@ -41,8 +41,7 @@ class QuestController {
         let answer = this.quests.map((q)=> {
             return q.answer || q.others;
         })
-        //ANSWERSTORE.get(this).answer = answer;
-        ANSWERSTORE.get(this).saveAnswer(answer)
+        (ANSWERSTORE.get(this)).saveAnswer(answer)
             .then((res)=>{
                 if(res.msg=='success') {
                     alert('Success');
