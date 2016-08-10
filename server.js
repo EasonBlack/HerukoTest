@@ -50,7 +50,7 @@ app.post('/login', function (req, res) {
 
 app.post('/answer', function (req, res) {
     var username = req.body.username;
-    var content = req.body.answer;
+    var content = req.body.content;
     console.log(username);
     console.log(content);
     var insert = `insert into answer(username, content) values('${username}',ARRAY${content})`;
