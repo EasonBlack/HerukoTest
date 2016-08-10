@@ -7,7 +7,7 @@ var cors = require('cors')
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'build')));
 app.use('/static', express.static(path.join(__dirname, 'client')));
@@ -25,16 +25,6 @@ app.get('/main', function (req, res) {
 });
 
 //success
-app.get('/getitems', function (req, res) {
-    var client = new pg.Client(process.env.DATABASE_URL);
-    pg.connect(process.env.DATABASE_URL, function (err, client, done) {
-        client.query('SELECT * FROM test1', function (err, result) {
-            done();
-            res.send(result.rows);
-        });
-    });
-})
-
 app.post('/login', function (req, res) {
     var name = req.body.name;
     var password = req.body.password;
@@ -43,9 +33,10 @@ app.post('/login', function (req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, client, done) {
         client.query(query, function (err, result) {
             done();
-            if(result.rows.length) {
+            if (result.rows.length) {
                 res.send({
                     msg: 'success',
+                    name: name,
                     token: '@dmin'
                 });
             } else {
@@ -55,6 +46,22 @@ app.post('/login', function (req, res) {
             }
         });
     });
+});
+
+app.post('/answer', function (req, res) {
+    var username = req.body.username;
+    var answer = req.body.answer;
+    console.log(username);
+    console.log(answer);
+    var insert = `insert into answer(username, content) values(${username},${answer})`;
+    var client = new pg.Client(process.env.DATABASE_URL);
+    pg.connect(process.env.DATABASE_URL, function (err, client, done) {
+        client.query(insert, function (err, result) {
+            done();
+            console.log(result);
+        });
+    });
+
 });
 
 app.get('/getitems2', function (req, res) {
@@ -82,3 +89,13 @@ app.post('/additem', function (req, res) {
     });
 
 });
+
+app.get('/getitems', function (req, res) {
+    var client = new pg.Client(process.env.DATABASE_URL);
+    pg.connect(process.env.DATABASE_URL, function (err, client, done) {
+        client.query('SELECT * FROM test1', function (err, result) {
+            done();
+            res.send(result.rows);
+        });
+    });
+})

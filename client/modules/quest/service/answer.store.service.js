@@ -1,6 +1,22 @@
+let HTTP = new WeakMap();
+
 class AnswerStoreService {
-    constructor() {
+    constructor($http) {
         this.answer = [];
+        HTTP.set(this, $http);
+    }
+
+    saveAnswer(answer) {
+
+        return (HTTP.get(this))({
+            method: 'POST',
+            url: `\answer`,
+            data: {
+                username: 'xxx',
+                content: answer
+            }
+        })
+
     }
 
     static factory() {
@@ -8,5 +24,7 @@ class AnswerStoreService {
     }
 
 }
+
+AnswerStoreService.$inject = ['$http'];
 
 export default AnswerStoreService;
