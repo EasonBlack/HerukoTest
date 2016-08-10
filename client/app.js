@@ -1,21 +1,8 @@
-//import 'angular';
 
-angular.module('app', [])
-    .controller('appCtrl', ['$scope', '$http', function ($scope, $http) {
-        $scope.message = 'Hello World';
+//module
+import "./modules/quest/quest.module.js"
 
-        $http.get('/getitems')
-            .then((res) => {
-                $scope.items = res.data;
-            })
-
-
-        $scope.add = ()=> {
-            $http.post('/additem', {text: $scope.content})
-                .then((res)=> {
-                    $scope.items = res.data;
-                })
-        }
-
-    }])
-;
+angular.module('app', [
+    'ui.router',
+    'quest.module'
+])

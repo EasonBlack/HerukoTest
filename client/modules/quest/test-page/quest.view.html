@@ -1,0 +1,32 @@
+<div class="quest__header_box flex__row">
+    <div class="ribbon__content ribbon__extra"></div>
+    <div class="ribbon__content flex__row_1"></div>
+</div>
+<div class="quest__view_box">
+    <div class="quest__mask">
+        <ul class="quest__container"
+            ng-style="{'left': -1 * vm.position + '%'}">
+            <li class="quest__item"
+                ng-repeat="quest in vm.quests track by $index">
+                <div class="quest__question text_20">
+                    {{$index + 1}}. {{quest.title}}
+                </div>
+                <app-quest-input type="quest.type" quest="quest" index="{{$index}}"></app-quest-input>
+
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="quest__button_prev" ng-click="vm.prev()" ng-show="!vm.isFirst()">
+        <span class="glyphicon glyphicon-arrow-left quest__arrow text_30 text_purple text_purple"></span>
+    </div>
+    <div class="quest__button_confirm" ng-click="vm.confirm()" ng-show="vm.isLast()">
+        Confirm
+    </div>
+    <div class="quest__button_next" ng-click="vm.next()" ng-show="!vm.isLast()">
+        <span class="glyphicon glyphicon-arrow-right quest__arrow text_30 text_purple text_purple"></span>
+    </div>
+</div>
+
+

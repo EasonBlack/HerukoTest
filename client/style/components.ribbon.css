@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'sf medium';
+  src: url(../fonts/SFUIText-Medium.ttf);
+}
+@font-face {
+  font-family: 'sf regular';
+  src: url(../fonts/SFUIText-Regular.ttf);
+}
+@font-face {
+  font-family: 'sf semibold';
+  src: url(../fonts/SFUIText-Semibold.ttf);
+}
+.ribbon__content {
+  background-color: #303F9F;
+  color: white;
+  height: 100%;
+  line-height: 100%;
+}
+.ribbon__extra {
+  width: 20px;
+  margin-right: 20px;
+}

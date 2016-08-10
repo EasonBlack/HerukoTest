@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'sf medium';
+  src: url(../fonts/SFUIText-Medium.ttf);
+}
+@font-face {
+  font-family: 'sf regular';
+  src: url(../fonts/SFUIText-Regular.ttf);
+}
+@font-face {
+  font-family: 'sf semibold';
+  src: url(../fonts/SFUIText-Semibold.ttf);
+}
+.text_regular {
+  font-family: 'sf regular';
+}
+.text_medium {
+  font-family: 'sf medium';
+}
+.text_semibold {
+  font-family: 'sf semibold';
+}
+.text_white {
+  color: white;
+}
+.text_black {
+  color: #404040;
+}
+.text_purple {
+  color: #303F9F;
+}
+.text_grey {
+  color: #808080;
+}
+.text_blue {
+  color: #0089BE;
+}
+.text_deepred {
+  color: #C0392B;
+}
+.text_30 {
+  font-size: 30px;
+}
+.text_24 {
+  font-size: 24px;
+}
+.text_20 {
+  font-size: 20px;
+}
+.text_18 {
+  font-size: 18px;
+}
+.text_16 {
+  font-size: 16px;
+}
+.text_14 {
+  font-size: 14px;
+}
+.text_10 {
+  font-size: 10px;
+}
+.text__first_capital {
+  text-transform: capitalize;
+}

@@ -1,0 +1,19 @@
+
+<div class="quest__header_box flex__row">
+    <div class="ribbon__content ribbon__extra"></div>
+    <div class="ribbon__content flex__row_1"></div>
+</div>
+<div class="quest__view_box scroll-y">
+    <div class="quest__view_inner-scroll">
+        <ul>
+            <li ng-repeat="quest in vm.quests">
+                <div class="quest__title_box">
+                    <span class="quest__num_box">{{$index + 1}}.</span><span>{{quest.title}}</span>
+                </div>
+                <div class="quest__answer_box">
+                    {{vm.answer[$index]}}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'sf medium';
+  src: url(../fonts/SFUIText-Medium.ttf);
+}
+@font-face {
+  font-family: 'sf regular';
+  src: url(../fonts/SFUIText-Regular.ttf);
+}
+@font-face {
+  font-family: 'sf semibold';
+  src: url(../fonts/SFUIText-Semibold.ttf);
+}

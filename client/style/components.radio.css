@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'sf medium';
+  src: url(../fonts/SFUIText-Medium.ttf);
+}
+@font-face {
+  font-family: 'sf regular';
+  src: url(../fonts/SFUIText-Regular.ttf);
+}
+@font-face {
+  font-family: 'sf semibold';
+  src: url(../fonts/SFUIText-Semibold.ttf);
+}
+.app-radio input[type="radio"] {
+  display: none;
+}
+.app-radio input[type="radio"] + label {
+  background: url('../images/checks.png') no-repeat 0 0;
+  height: 24px;
+  padding-left: 26px;
+  display: block;
+  line-height: 24px;
+  padding-top: 0px;
+}
+.app-radio input[type="radio"]:checked + label {
+  background-position: 0 -48px;
+}

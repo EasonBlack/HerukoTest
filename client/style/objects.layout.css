@@ -1,0 +1,60 @@
+.relative {
+  position: relative;
+}
+.flex__row {
+  display: flex;
+  flex-direction: row;
+}
+.flex__row_100vh {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.flex__row_wrap {
+  flex-wrap: wrap;
+}
+.flex__row_right {
+  justify-content: flex-end;
+}
+.flex__row_300 {
+  width: 300px;
+}
+.flex__row_1 {
+  flex: 1;
+}
+.flex__row_2 {
+  flex: 2;
+}
+.flex__row_3 {
+  flex: 3;
+}
+.float__left {
+  float: left;
+}
+.float__right {
+  float: right;
+}
+.float__left_margin {
+  margin-right: auto;
+}
+.float__right_margin {
+  margin-left: auto;
+}
+.layout_relative {
+  position: relative;
+}
+.layout__width_100 {
+  width: 100%;
+}
+.layout__height_100 {
+  height: 100%;
+}
+.layout__scroll_y {
+  overflow-y: scroll;
+}
+.full-height {
+  height: 100%;
+}
+.scroll-y {
+  overflow-y: scroll;
+}
