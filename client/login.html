@@ -36,7 +36,7 @@
             var _pwd = $('#txt_pwd').val();
             $.post('/login', {name: _name, password: _pwd})
                     .then(function (res) {
-                        if(res.msg=='succuss') {
+                        if(res.msg=='success') {
                             $.cookie('token', ret.token);
                             location.href = '/main';
                         }
