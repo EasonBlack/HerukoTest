@@ -51,11 +51,9 @@ app.post('/login', function (req, res) {
 app.post('/answer', function (req, res) {
     var username = req.body.username;
     var content = req.body.content;
-    content = JSON.stringify(content);
     console.log(username);
     console.log(content);
     var insert = `insert into answer(username, content) values('${username}',ARRAY${content})`;
-    var insertQuery = "insert into answer(username, content) values('" + username + "','" + content + "')";
     console.log(insert);
     var client = new pg.Client(process.env.DATABASE_URL);
     pg.connect(process.env.DATABASE_URL, function (err, client, done) {
