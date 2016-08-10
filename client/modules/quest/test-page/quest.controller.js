@@ -40,7 +40,7 @@ class QuestController {
     confirm() {
         let answer = this.quests.map((q)=> {
             return q.answer || q.others;
-        })
+        });
         (ANSWERSTORE.get(this)).saveAnswer(answer)
             .then((res)=>{
                 if(res.msg=='success') {
