@@ -43,10 +43,10 @@ app.post('/login', function (req, res) {
         client.query(query, function (err, result) {
             done();
             if(result.rows.length) {
-                res.send('Success');
-                //res.sendfile('./client/index.html');
+                //res.send('Success');
+                res.sendfile('./client/index.html');
             } else {
-                res.send('µÇÂ¼Ê§°Ü');
+                res.send('Login Failed');
             }
         });
     });
