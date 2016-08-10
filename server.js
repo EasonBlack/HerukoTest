@@ -7,7 +7,7 @@ var cors = require('cors')
 var app = express();
 app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'build')));
 app.use('/static', express.static(path.join(__dirname, 'client')));
@@ -43,12 +43,10 @@ app.post('/login', function (req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, client, done) {
         client.query(query, function (err, result) {
             done();
-            if (result.rows.length) {
-                console.log('success');
-                //res.redirect('/main');
-                res.render('./client/index.html');
+            if(result.rows.length) {
+                res.send('success');
             } else {
-                res.send('Login Failed');
+                res.send('failed');
             }
         });
     });
