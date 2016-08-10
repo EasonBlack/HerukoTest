@@ -37,7 +37,7 @@
             $.post('/login', {name: _name, password: _pwd})
                     .then(function (res) {
                         if(res.msg=='success') {
-                            $.cookie('token', ret.token);
+                            $.cookie('token', res.token);
                             location.href = '/main';
                         }
                     })
