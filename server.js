@@ -49,10 +49,6 @@ app.post('/login', function (req, res) {
             }
         });
     });
-
-    client.connect();
-    var query = client.query("select * from user_account where name=='" + name + "' and password=='" + password + "'");
-
 });
 
 app.get('/getitems2', function (req, res) {
