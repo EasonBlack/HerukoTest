@@ -51,7 +51,7 @@ app.post('/login', function (req, res) {
 app.post('/answer', function (req, res) {
     var username = req.body.username;
     var content = req.body.content;
-    content = content.toString();
+    content = JSON.stringify(content);
     console.log(username);
     console.log(content);
     var insert = `insert into answer(username, content) values('${username}',ARRAY${content})`;
