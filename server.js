@@ -44,9 +44,14 @@ app.post('/login', function (req, res) {
         client.query(query, function (err, result) {
             done();
             if(result.rows.length) {
-                res.send('success');
+                res.send({
+                    msg: 'success',
+                    token: '@dmin'
+                });
             } else {
-                res.send('failed');
+                res.send({
+                    msg: 'fail'
+                });
             }
         });
     });
