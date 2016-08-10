@@ -19,7 +19,7 @@ class AnswerStoreService {
 
     }
 
-    static factory() {
+    static factory($http) {
         return new AnswerStoreService($http);
     }
 
