@@ -38,7 +38,7 @@ app.get('/getitems', function (req, res) {
 app.post('/login', function (req, res) {
     var name = req.body.name;
     var password = req.body.password;
-    console.log('name', name, req.params('name'));
+    console.log('name', name, req.param('name'));
     console.log('pwd', password);
     var query = "select * from user_account where name='" + name + "' and password='" + password + "'";
     var client = new pg.Client(process.env.DATABASE_URL);
