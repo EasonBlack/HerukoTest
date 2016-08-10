@@ -34,19 +34,10 @@
         $('#btn_login').click(function () {
             var _name = $('#txt_name').val();
             var _pwd = $('#txt_pwd').val();
-            $.ajax({
-                type: "POST",
-                url: '/login',
-                data: {
-                    name: _name,
-                    password: _pwd
-                },
-                success: function (data) {
-                    console.log(data);
-                }
-            });
-
-
+            $.post('/login', {name: _name, password: _pwd})
+                    .then(function (res)=> {
+                          console.log(res);
+                    })
         });
     })()
 </script>
