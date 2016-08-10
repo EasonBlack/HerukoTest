@@ -60,7 +60,11 @@ app.post('/answer', function (req, res) {
     pg.connect(process.env.DATABASE_URL, function (err, client, done) {
         client.query(insert, function (err, result) {
             done();
-            console.log(result);
+            if(result && result.rowCount) {
+                 res.send({
+                     msg: 'success'
+                 })
+            }
         });
     });
 
