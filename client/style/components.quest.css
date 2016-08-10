@@ -1,14 +1,14 @@
 @font-face {
   font-family: 'sf medium';
-  src: url(../fonts/SFUIText-Medium.ttf);
+  src: url(static/fonts/SFUIText-Medium.ttf);
 }
 @font-face {
   font-family: 'sf regular';
-  src: url(../fonts/SFUIText-Regular.ttf);
+  src: url(static/fonts/SFUIText-Regular.ttf);
 }
 @font-face {
   font-family: 'sf semibold';
-  src: url(../fonts/SFUIText-Semibold.ttf);
+  src: url(static/fonts/SFUIText-Semibold.ttf);
 }
 .quest__header_box {
   height: 40px;
@@ -77,8 +77,8 @@
   margin: 0 auto;
   text-align: center;
   border-radius: 10px;
-  border: 1px solid #303f9f;
-  background-color: #303f9f;
+  border: 1px solid #303F9F;
+  background-color: #303F9F;
   box-shadow: 0 1px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.31);
   color: white;
   font-size: 18px;
@@ -88,7 +88,7 @@
   cursor: pointer;
 }
 .quest__arrow:hover {
-  color: #1abc9c;
+  color: #1ABC9C;
 }
 .quest__input_others {
   border: none;
