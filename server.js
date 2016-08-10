@@ -16,7 +16,11 @@ app.listen(app.get('port'), function () {
 });
 
 app.get('/', function (req, res) {
-    res.sendfile('./index.html');
+    res.sendfile('./client/login.html');
+});
+
+app.get('/main', function (req, res) {
+    res.sendfile('./client/index.html');
 });
 
 //success
