@@ -13,14 +13,14 @@
 <div class="flex__row_100vh flex__row_center login__bg">
     <div class="login__container">
         <div class="login__item">
-             <label class="text_white">Name</label>
-             <span>:</span>
-             <input type="text" />
+            <label class="text_white">Name</label>
+            <span>:</span>
+            <input type="text" id="txt_name"/>
         </div>
         <div class="login__item">
-            <label  class="text_white">Password</label>
+            <label class="text_white">Password</label>
             <span>:</span>
-            <input type="password" />
+            <input type="password" id="txt_pwd"/>
         </div>
         <div class="login__item">
             <a id="btn_login">LOGIN</a>
@@ -30,9 +30,23 @@
 </body>
 
 <script>
-    (function(){
-        $('#btn_login').click(function(){
-            alert(123);
+    (function () {
+        $('#btn_login').click(function () {
+            var _name = $('#txt_name').val();
+            var _pwd = $('#txt_pwd').val();
+            $.ajax({
+                type: "POST",
+                url: '/login',
+                data: {
+                    name: _name,
+                    password: _pwd
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+
+
         });
     })()
 </script>

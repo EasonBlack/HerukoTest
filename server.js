@@ -25,7 +25,7 @@ app.get('/main', function (req, res) {
 
 //success
 app.get('/getitems', function (req, res) {
-    var client = new pg.Client(process.env.DATABASE_URL );
+    var client = new pg.Client(process.env.DATABASE_URL);
     pg.connect(process.env.DATABASE_URL, function (err, client, done) {
         client.query('SELECT * FROM test1', function (err, result) {
             done();
@@ -34,8 +34,29 @@ app.get('/getitems', function (req, res) {
     });
 })
 
+app.post('/login', function (req, res) {
+    var name = req.param('name');
+    var password = req.param('password');
+    var query = "select * from user_account where name=='" + name + "' and password=='" + password + "'";
+    var client = new pg.Client(process.env.DATABASE_URL);
+    pg.connect(process.env.DATABASE_URL, function (err, client, done) {
+        client.query(query, function (err, result) {
+            done();
+            if(result.rows.length) {
+                res.sendfile('./client/index.html');
+            } else {
+                res.send('µÇÂ¼Ê§°Ü');
+            }
+        });
+    });
+
+    client.connect();
+    var query = client.query("select * from user_account where name=='" + name + "' and password=='" + password + "'");
+
+});
+
 app.get('/getitems2', function (req, res) {
-    var client = new pg.Client(process.env.DATABASE_URL );
+    var client = new pg.Client(process.env.DATABASE_URL);
     pg.connect(process.env.DATABASE_URL, function (err, client, done) {
         client.query('SELECT * FROM test2', function (err, result) {
             done();
