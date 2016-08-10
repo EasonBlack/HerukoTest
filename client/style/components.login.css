@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'sf medium';
+  src: url(../fonts/SFUIText-Medium.ttf);
+}
+@font-face {
+  font-family: 'sf regular';
+  src: url(../fonts/SFUIText-Regular.ttf);
+}
+@font-face {
+  font-family: 'sf semibold';
+  src: url(../fonts/SFUIText-Semibold.ttf);
+}
+.login__bg {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#303F9F), to(#fff));
+}
+.login__container {
+  width: 300px;
+  height: 200px;
+  border: 2px solid #F0F3F5;
+  border-radius: 10px;
+  margin-bottom: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login__item {
+  margin-bottom: 15px;
+  height: 30px;
+  line-height: 30px;
+}
+.login__item label {
+  width: 75px;
+  display: inline-block;
+  font-size: 17px;
+}
+.login__item input {
+  width: 150px;
+  height: 30px;
+  margin-left: 10px;
+  padding: 0 5px;
+}
+.login__item a {
+  display: inline-block;
+  border: 1px solid #303F9F;
+  background-color: #303F9F;
+  box-shadow: 0 1px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.31);
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+  height: 40px;
+  line-height: 40px;
+}

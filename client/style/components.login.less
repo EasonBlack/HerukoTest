@@ -1,0 +1,49 @@
+@import 'settings.global.less';
+
+.login__bg {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@purple), to(#fff));
+}
+
+.login__container {
+  width: 300px;
+  height: 200px;
+  border: 2px solid @light-blue;
+  border-radius: 10px;
+  margin-bottom: 65px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login__item {
+  margin-bottom: 15px;
+  height: 30px;
+  line-height: 30px;
+
+  label {
+    width: 75px;
+    display: inline-block;
+    font-size: 17px;
+  }
+  input {
+    width: 150px;
+    height: 30px;
+    margin-left: 10px;
+    padding: 0 5px;
+  }
+  a {
+    display: inline-block;
+    border: 1px solid @purple;
+    background-color: @purple;
+    box-shadow: 0 1px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.31);
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    height: 40px;
+    line-height: 40px;
+  }
+}
