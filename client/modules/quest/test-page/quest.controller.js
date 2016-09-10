@@ -43,6 +43,7 @@ class QuestController {
         });
         (ANSWERSTORE.get(this)).saveAnswer(answer)
             .then((res)=>{
+                console.log(res);
                 if(res.data.msg=='success') {
                     alert('Success');
                 } else {
