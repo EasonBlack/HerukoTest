@@ -3,8 +3,23 @@ var path = require('path');
 var pg = require('pg');
 var bodyParser = require('body-parser');
 var cors = require('cors')
-
 var app = express();
+
+if(!process.env.DATABASE_URL) {
+    var webpack = require('webpack');
+    var config = require('./client/webpack.config.dev.js');
+    var webpackDevMiddleware = require('webpack-dev-middleware');
+    var compiler = webpack(config);
+    app.use(webpackDevMiddleware(compiler, {
+        noInfo: true,
+        publicPath: config.output.publicPath,
+        stats: {
+            colors: true
+        }
+    }));
+    process.env.DATABASE_URL = "postgres://eason:admin@localhost:5432/demo";
+}
+
 app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
