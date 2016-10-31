@@ -1,0 +1,29 @@
+@import 'settings.global.less';
+
+.question-new__container {
+  position: absolute;
+  width: 500px;
+  left: 50%;
+  top: 30%;
+  margin-left: -250px;
+  background-color: white;
+  z-index: 10;
+  border: 2px solid @purple;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.question-new__option {
+  position: relative;
+  padding-left: 10px;
+  display: flex;
+}
+
+.question-new__option_name {
+  flex: 1;
+}
+
+.question-new__option_remove {
+  color: red;
+  width: 50px;
+}

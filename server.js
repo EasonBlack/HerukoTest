@@ -5,7 +5,8 @@ var bodyParser = require('body-parser');
 var cors = require('cors')
 var app = express();
 
-if(!process.env.DATABASE_URL) {
+
+if (!process.env.DATABASE_URL) {
     var webpack = require('webpack');
     var config = require('./client/webpack.config.dev.js');
     var webpackDevMiddleware = require('webpack-dev-middleware');
@@ -19,6 +20,7 @@ if(!process.env.DATABASE_URL) {
     }));
     process.env.DATABASE_URL = "postgres://eason:admin@localhost:5432/demo";
 }
+
 
 app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
@@ -68,16 +70,14 @@ app.post('/answer', function (req, res) {
     var content = req.body.content;
     console.log(username);
     var _content = '';
-    content.forEach(function(item,i){
-        if(!i) {
-            _content +=  '\'' + item +  '\'';
-        }  else {
-            _content +=  ',\'' + item +  '\'';
+    content.forEach(function (item, i) {
+        if (!i) {
+            _content += '\'' + item + '\'';
+        } else {
+            _content += ',\'' + item + '\'';
         }
     })
-    console.log(_content);
     var insert = `insert into answer(username, content) values('${username}',ARRAY[${_content}])`;
-    console.log(insert);
     var client = new pg.Client(process.env.DATABASE_URL);
     pg.connect(process.env.DATABASE_URL, function (err, client, done) {
         client.query(insert, function (err, result) {
@@ -89,41 +89,46 @@ app.post('/answer', function (req, res) {
             }
         });
     });
-
 });
 
-app.get('/getitems2', function (req, res) {
+app.get('/question-type',function(req,res){
+    var select = `select * from item where type='question_type'`;
     var client = new pg.Client(process.env.DATABASE_URL);
-    pg.connect(process.env.DATABASE_URL, function (err, client, done) {
-        client.query('SELECT * FROM test2', function (err, result) {
-            done();
-            res.send(result.rows);
+    client.connect(function (err) {
+        if (err) throw err;
+        client.query(select, function (error, results) {
+            res.send(results.rows);
+            client.end(function (err) {
+                if (err) throw err;
+            });
         });
     });
 })
 
-app.post('/additem', function (req, res) {
-    var text = req.param('text');
-    var _rows = [];
-    //res.send(text);
+
+app.get('/question',function(req,res){
+    var select = `select * from question`;
     var client = new pg.Client(process.env.DATABASE_URL);
-    client.connect();
-    var insertquery = client.query("insert into test1 (text) values ('" + text + "')");
-    insertquery.on("end", function (result) {
-        client.query('SELECT * FROM test1', function (err, result) {
-            client.end();
-            res.send(result.rows);
+    client.connect(function (err) {
+        if (err) throw err;
+        client.query(select, function (error, results) {
+            res.send(results);
         });
     });
+})
 
-});
-
-app.get('/getitems', function (req, res) {
+app.post('/question', function (req, res) {
+    var options = req.body.options.split(',').map(o=> '\''+ o +'\'').join(',')
+    var insert = `
+        insert into question(type,content,options,extra, show) 
+        values(${req.body.type}, '${req.body.content}', ARRAY[${options}], ${ req.body.extra}, ${req.body.show})
+    `
+    console.log(insert);
     var client = new pg.Client(process.env.DATABASE_URL);
-    pg.connect(process.env.DATABASE_URL, function (err, client, done) {
-        client.query('SELECT * FROM test1', function (err, result) {
-            done();
-            res.send(result.rows);
+    client.connect(function (err) {
+        if (err) throw err;
+        client.query(insert, function (error, results) {
+            if(!error) res.send('success');
         });
     });
 })

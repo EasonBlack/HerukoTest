@@ -1,0 +1,30 @@
+<div class="quest__header_box flex__row">
+    <div class="ribbon__content ribbon__extra"></div>
+    <div class="ribbon__content flex__row_1"></div>
+</div>
+<div class="question-gen__button-bar">
+    <a class="btn btn-primary" ng-click="vm.showNewModal()">New Question</a>
+</div>
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>CONTENT</th>
+            <th>OPTIONS</th>
+            <th>SHOW</th>
+            <th>EXTRA</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="question in (vm.questions || [])">
+            <td>{{question.id}}</td>
+            <td>{{question.content}}</td>
+            <td>{{question.options | json}}</td>
+            <td>{{question.show}}</td>
+            <td>{{question.extra}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<question-new active="vm.new_active" on-submit="vm.onSubmit(event);"></question-new>

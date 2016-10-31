@@ -23,6 +23,9 @@
 .flex__row_300 {
   width: 300px;
 }
+.flex__row_60 {
+  width: 60px;
+}
 .flex__row_1 {
   flex: 1;
 }

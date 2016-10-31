@@ -1,0 +1,7 @@
+.question-gen__button-bar {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 30px;
+}

@@ -871,6 +871,9 @@ select {
 .flex__row_300 {
   width: 300px;
 }
+.flex__row_60 {
+  width: 60px;
+}
 .flex__row_1 {
   flex: 1;
 }
@@ -1003,6 +1006,11 @@ select {
   color: white;
   height: 40px;
   line-height: 40px;
+  cursor: pointer;
+}
+.login__item a:hover {
+  border: 1px solid #5E6AB4;
+  background-color: #5E6AB4;
 }
 .quest__header_box {
   height: 40px;
@@ -1094,6 +1102,9 @@ select {
 .quest__input_others:focus {
   outline: none;
 }
+.test {
+  height: 100px;
+}
 .ribbon__content {
   background-color: #303F9F;
   color: white;
@@ -1138,4 +1149,35 @@ select {
 }
 .app-textarea:focus {
   outline: none;
+}
+.question-gen__button-bar {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 30px;
+}
+.question-new__container {
+  position: absolute;
+  width: 500px;
+  left: 50%;
+  top: 30%;
+  margin-left: -250px;
+  background-color: white;
+  z-index: 10;
+  border: 2px solid #303F9F;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+.question-new__option {
+  position: relative;
+  padding-left: 10px;
+  display: flex;
+}
+.question-new__option_name {
+  flex: 1;
+}
+.question-new__option_remove {
+  color: red;
+  width: 50px;
 }
