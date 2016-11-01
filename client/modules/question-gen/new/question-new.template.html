@@ -1,10 +1,10 @@
-<div class="question-new__container" ng-if="$ctrl.active==true">
+<div class="question-new__container">
     <form>
         <div class="form-group">
             <label>Type</label>
             <div>
                 <select ng-model="$ctrl.current.type"
-                        ng-options="item.id as item.name for item in ($ctrl.question_type || [])"
+                        ng-options="item.id as item.name for item in ($ctrl.question_type||[])"
                 >
                 </select>
             </div>
@@ -20,15 +20,15 @@
             <ul>
                 <li ng-repeat="option in $ctrl.current.options" class="question-new__option">
                     <span class="question-new__option_name">{{option}}</span>
-                    <span class="glyphicon glyphicon-remove question-new__option_remove" ng-click="$ctrl.remove_options($index)"></span>
+                    <span class="glyphicon glyphicon-remove question-new__option_remove"
+                          ng-click="$ctrl.remove_options($index)"></span>
                 </li>
             </ul>
             <div class="flex__row">
                 <input type="text" class="form-control flex__row_1" id="question_options" placeholder="option"
                        ng-model="$ctrl.current_option"/>
-                <a class="btn btn-primary flex__row_200"  ng-click="$ctrl.add_options()">ADD</a>
+                <a class="btn btn-primary flex__row_200" ng-click="$ctrl.add_options()">ADD</a>
             </div>
-
 
         </div>
         <div class="checkbox">

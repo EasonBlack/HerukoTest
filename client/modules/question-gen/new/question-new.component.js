@@ -4,12 +4,13 @@ import controller from './question-new.controller'
 let QeustionNewComponent = {
     template,
     controller,
-    bindings:  {
+    bindings: {
         active: '=',
         current: '<',
         onSubmit: '&',
-        onCancel:'&'
+        onCancel: '&'
     }
 }
+
 
 export default QeustionNewComponent;

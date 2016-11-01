@@ -14,6 +14,7 @@ class QuestGenController {
         this.current = {}
     }
 
+
     showUpdateModal(question) {
         this.current= question;
         this.new_active = true;
@@ -34,7 +35,6 @@ class QuestGenController {
         });
     }
 }
-
 
 QuestGenController.$inject = ['QuestionService', '$state'];
 

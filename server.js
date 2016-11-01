@@ -92,7 +92,7 @@ app.post('/answer', function (req, res) {
     });
 });
 
-app.get('/question-type',function(req,res){
+app.get('/question-type', function (req, res) {
     var select = `select * from item where type='question_type'`;
     var client = new pg.Client(process.env.DATABASE_URL);
     client.connect(function (err) {
@@ -106,7 +106,7 @@ app.get('/question-type',function(req,res){
     });
 })
 
-app.get('/question',function(req,res){
+app.get('/question', function (req, res) {
     var select = `select * from question order by order_num`;
     var client = new pg.Client(process.env.DATABASE_URL);
     client.connect(function (err) {
@@ -118,26 +118,36 @@ app.get('/question',function(req,res){
 })
 
 app.post('/question', function (req, res) {
-    var insert = '';
-
-    if(!req.body.options) {
-         insert = `
-            insert into question(type,content,extra, show, order_num) 
-            values(${req.body.type}, '${req.body.content}', ${ req.body.extra}, ${req.body.show}, ${req.body.order_num})
-        `
+    var insert = '', update = '', queryStr = '';
+    var optionsState = '';
+    if (req.body.options) {
+        optionsState = 'ARRAY[' + req.body.options.split(',').map(o=> '\'' + o + '\'').join(',') + ']';
     } else {
-        var options = req.body.options.split(',').map(o=> '\''+ o +'\'').join(',');
-        insert = `
-        insert into question(type,content,options,extra, show, order_num) 
-        values(${req.body.type}, '${req.body.content}', ARRAY[${options}], ${ req.body.extra}, ${req.body.show}, ${req.body.order_num})
-    `
+        optionsState = 'ARRAY[]::text[]';
+    }
+
+    if (req.body.id) {
+        queryStr = `
+            update question set type=${req.body.type},
+            content = '${req.body.content}',
+            options = ${optionsState},
+            extra = ${ req.body.extra},
+            show =  ${req.body.show},
+            order_num = ${req.body.order_num}
+            where id = ${req.body.id}
+        `;
+    } else {
+        queryStr = `
+            insert into question(type,content,options,extra, show, order_num) 
+            values(${req.body.type}, '${req.body.content}', ${optionsState}, ${ req.body.extra}, ${req.body.show}, ${req.body.order_num})
+        `;
     }
 
     var client = new pg.Client(process.env.DATABASE_URL);
     client.connect(function (err) {
         if (err) throw err;
-        client.query(insert, function (error, results) {
-            if(!error) res.send('success');
+        client.query(queryStr, function (error, results) {
+            if (!error) res.send('success');
         });
     });
 })

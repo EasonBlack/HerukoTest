@@ -33,7 +33,7 @@
         </tbody>
     </table>
 </div>
-<question-new
+<question-new ng-if="vm.new_active==true"
         active="vm.new_active"
         current = "vm.current"
         on-submit="vm.onSubmit(event);"
