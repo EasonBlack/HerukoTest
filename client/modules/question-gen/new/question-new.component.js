@@ -6,7 +6,9 @@ let QeustionNewComponent = {
     controller,
     bindings:  {
         active: '=',
-        onSubmit: '&'
+        current: '<',
+        onSubmit: '&',
+        onCancel:'&'
     }
 }
 

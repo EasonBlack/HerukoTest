@@ -9,22 +9,33 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>CONTENT</th>
-            <th>OPTIONS</th>
-            <th>SHOW</th>
-            <th>EXTRA</th>
+            <th style="width:5%">ID</th>
+            <th style="width:40%">CONTENT</th>
+            <th style="width:40%">OPTIONS</th>
+            <th style="width:5%">SHOW</th>
+            <th style="width:5%">EXTRA</th>
+            <th style="width:5%">ORDER</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="question in (vm.questions || [])">
+        <tr ng-repeat="question in (vm.questions || [])" >
             <td>{{question.id}}</td>
-            <td>{{question.content}}</td>
-            <td>{{question.options | json}}</td>
+            <td ng-click="vm.showUpdateModal(question)">{{question.content}}</td>
+            <td>
+                <div ng-class="{'question-gen__option_split': !$last}"  ng-repeat="option in question.options || []" >
+                    {{option}}
+                </div>
+            </td>
             <td>{{question.show}}</td>
             <td>{{question.extra}}</td>
+            <td>{{question.order_num}}</td>
         </tr>
         </tbody>
     </table>
 </div>
-<question-new active="vm.new_active" on-submit="vm.onSubmit(event);"></question-new>
+<question-new
+        active="vm.new_active"
+        current = "vm.current"
+        on-submit="vm.onSubmit(event);"
+        on-cancel = "vm.onCancel(event);"
+></question-new>

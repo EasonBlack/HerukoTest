@@ -3,7 +3,7 @@
         <div class="form-group">
             <label>Type</label>
             <div>
-                <select ng-model="$ctrl.selected_type"
+                <select ng-model="$ctrl.current.type"
                         ng-options="item.id as item.name for item in ($ctrl.question_type || [])"
                 >
                 </select>
@@ -13,12 +13,12 @@
         <div class="form-group">
             <label for="question_content">Content</label>
             <input type="text" class="form-control" id="question_content" placeholder="content"
-                   ng-model="$ctrl.question_content">
+                   ng-model="$ctrl.current.content">
         </div>
-        <div class="form-group" ng-if="$ctrl.selected_type==1">
+        <div class="form-group" ng-if="$ctrl.current.type==1">
             <label for="question_options">Options</label>
             <ul>
-                <li ng-repeat="option in $ctrl.question_options" class="question-new__option">
+                <li ng-repeat="option in $ctrl.current.options" class="question-new__option">
                     <span class="question-new__option_name">{{option}}</span>
                     <span class="glyphicon glyphicon-remove question-new__option_remove" ng-click="$ctrl.remove_options($index)"></span>
                 </li>
@@ -30,6 +30,21 @@
             </div>
 
 
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="$ctrl.current.extra"> Extra
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="$ctrl.current.show"> Show
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="question_order">Order</label>
+            <input type="text" class="form-control" id="question_order" placeholder="order"
+                   ng-model="$ctrl.current.order_num">
         </div>
         <a class="btn btn-primary" ng-click="$ctrl.post_question()">Submit</a>
         <a class="btn btn-danger" ng-click="$ctrl.new_cancel()">Cancel</a>

@@ -1,6 +1,6 @@
 <div ng-switch="$ctrl.type" class="quest__content_box">
-    <ul ng-switch-when="radio" class="text_16">
-        <li ng-repeat="item in $ctrl.quest.items" class="quest_content-item_box app-radio">
+    <ul ng-switch-when="1" class="text_16">
+        <li ng-repeat="item in $ctrl.quest.options" class="quest_content-item_box app-radio">
             <input type="radio"
                    id="item{{$ctrl.index}}_{{$index}}"
                    name="item{{$ctrl.index}}"
@@ -10,7 +10,7 @@
                 {{item}}
             </label>
         </li>
-        <li ng-show="$ctrl.quest.hasOther"  class="quest_content-item_box app-radio">
+        <li ng-show="$ctrl.quest.extra"  class="quest_content-item_box app-radio">
             <input type="radio"
                    id="item{{$ctrl.index}}_other"
                    name="item{{$ctrl.index}}"
@@ -21,5 +21,5 @@
             <input type="text" width="200" class="quest__input_others"  ng-model="$ctrl.quest.others"/>
         </li>
     </ul>
-    <textarea ng-switch-when="textarea" class="app-textarea" ng-model="$ctrl.quest.answer"></textarea>
+    <textarea ng-switch-when="2" class="app-textarea" ng-model="$ctrl.quest.answer"></textarea>
 </div>

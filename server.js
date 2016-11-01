@@ -77,6 +77,7 @@ app.post('/answer', function (req, res) {
             _content += ',\'' + item + '\'';
         }
     })
+
     var insert = `insert into answer(username, content) values('${username}',ARRAY[${_content}])`;
     var client = new pg.Client(process.env.DATABASE_URL);
     pg.connect(process.env.DATABASE_URL, function (err, client, done) {
@@ -105,9 +106,8 @@ app.get('/question-type',function(req,res){
     });
 })
 
-
 app.get('/question',function(req,res){
-    var select = `select * from question`;
+    var select = `select * from question order by order_num`;
     var client = new pg.Client(process.env.DATABASE_URL);
     client.connect(function (err) {
         if (err) throw err;
@@ -118,12 +118,21 @@ app.get('/question',function(req,res){
 })
 
 app.post('/question', function (req, res) {
-    var options = req.body.options.split(',').map(o=> '\''+ o +'\'').join(',')
-    var insert = `
-        insert into question(type,content,options,extra, show) 
-        values(${req.body.type}, '${req.body.content}', ARRAY[${options}], ${ req.body.extra}, ${req.body.show})
+    var insert = '';
+
+    if(!req.body.options) {
+         insert = `
+            insert into question(type,content,extra, show, order_num) 
+            values(${req.body.type}, '${req.body.content}', ${ req.body.extra}, ${req.body.show}, ${req.body.order_num})
+        `
+    } else {
+        var options = req.body.options.split(',').map(o=> '\''+ o +'\'').join(',');
+        insert = `
+        insert into question(type,content,options,extra, show, order_num) 
+        values(${req.body.type}, '${req.body.content}', ARRAY[${options}], ${ req.body.extra}, ${req.body.show}, ${req.body.order_num})
     `
-    console.log(insert);
+    }
+
     var client = new pg.Client(process.env.DATABASE_URL);
     client.connect(function (err) {
         if (err) throw err;

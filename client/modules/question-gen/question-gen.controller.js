@@ -11,10 +11,21 @@ class QuestGenController {
 
     showNewModal() {
         this.new_active = true;
+        this.current = {}
+    }
+
+    showUpdateModal(question) {
+        this.current= question;
+        this.new_active = true;
     }
 
     onSubmit() {
         this.fetchQuestions();
+    }
+
+    onCancel() {
+        this.current = null;
+        this.new_active = false;
     }
 
     fetchQuestions() {

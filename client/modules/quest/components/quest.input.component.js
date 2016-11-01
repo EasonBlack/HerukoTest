@@ -2,7 +2,6 @@ import tpl from './quest.input.template.html'
 
 class appQuestInputController {
     constructor() {
-
     }
 }
 
@@ -15,5 +14,6 @@ let appQuestInput = {
     }
     //controller: appQuestInputController
 }
+
 
 export default appQuestInput;

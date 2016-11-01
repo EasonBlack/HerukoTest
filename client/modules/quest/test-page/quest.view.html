@@ -9,7 +9,7 @@
             <li class="quest__item"
                 ng-repeat="quest in vm.quests track by $index">
                 <div class="quest__question text_20">
-                    {{$index + 1}}. {{quest.title}}
+                    {{$index + 1}}. {{quest.content}}
                 </div>
                 <app-quest-input type="quest.type" quest="quest" index="{{$index}}"></app-quest-input>
 

@@ -1,13 +1,17 @@
 let QUESTCONST = new WeakMap();
 let ANSWERSTORE = new WeakMap();
+let QUESTIONSERVICE = new WeakMap();
 let STATE = new WeakMap();
 
 class QuestController {
-    constructor(QuestConst, AnswerStoreService, $state) {
+    constructor(QuestConst, AnswerStoreService,QuestionService, $state) {
         QUESTCONST.set(this, QuestConst)
         ANSWERSTORE.set(this, AnswerStoreService);
+        QUESTIONSERVICE.set(this, QuestionService);
         STATE.set(this, $state);
-        this.quests = QUESTCONST.get(this).quests;
+        QUESTIONSERVICE.get(this).getAllQuestions().then(result=>{
+            this.quests = result.data.rows;
+        })
         this.current = 0;
     }
 
@@ -30,6 +34,8 @@ class QuestController {
     }
 
     isLast() {
+        if(!this.quests) return ;
+
         if (this.current == this.quests.length - 1) {
             return true;
         } else {
@@ -53,6 +59,6 @@ class QuestController {
     }
 }
 
-QuestController.$inject = ['QuestConst', 'AnswerStoreService', '$state'];
+QuestController.$inject = ['QuestConst', 'AnswerStoreService', 'QuestionService', '$state'];
 
 export default QuestController;
