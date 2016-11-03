@@ -1,4 +1,3 @@
-
 let QUESTIONSERVICE = new WeakMap();
 
 class QuestNewController {
@@ -27,11 +26,10 @@ class QuestNewController {
             type: this.current.type,
             content: this.current.content,
             options: this.current.options ? this.current.options.join(',') : '',
-            extra: this.current.extra,
-            show: this.current.show,
+            extra: this.current.extra == undefined ? false : this.current.extra,
+            show: this.current.show == undefined ? false : this.current.show,
             order_num: 1 * this.current.order_num
         }
-        console.log(question);
         QUESTIONSERVICE.get(this).postQuestion(question).then(result=> {
             if (result.data == 'success') {
                 this.new_cancel();

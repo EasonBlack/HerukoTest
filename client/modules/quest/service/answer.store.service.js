@@ -6,17 +6,16 @@ class AnswerStoreService {
         HTTP.set(this, $http);
     }
 
-    saveAnswer(answer) {
+    saveAnswer(object) {
 
         return (HTTP.get(this))({
             method: 'POST',
             url: `\answer`,
             data: {
-                username: 'xxx',
-                content: answer
+                username: object.user,
+                content: object.answer
             }
         })
-
     }
 
     static factory($http) {

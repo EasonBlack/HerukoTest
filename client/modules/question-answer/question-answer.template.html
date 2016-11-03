@@ -1,0 +1,26 @@
+<div class="quest__header_box flex__row">
+    <div class="ribbon__content ribbon__extra"></div>
+    <div class="ribbon__content flex__row_1"></div>
+</div>
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width:5%">ID</th>
+            <th style="width:40%">USER</th>
+            <th style="width:40%">ANSWERS</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="answer in (vm.answers || [])" >
+            <td>{{answer.id}}</td>
+            <td>{{answer.username}}</td>
+            <td>
+                <div ng-class="{'question-gen__option_split': !$last}"  ng-repeat="content in answer.content || []" >
+                    {{content}}
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

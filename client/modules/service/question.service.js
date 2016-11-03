@@ -12,6 +12,14 @@ class QuestionService {
         })
     }
 
+    getAllAnswer() {
+        return (HTTP.get(this))({
+            method: 'GET',
+            url: `\answer`
+        })
+    }
+
+
     getQuestionType() {
         return (HTTP.get(this))({
             method: 'GET',

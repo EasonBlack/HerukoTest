@@ -92,6 +92,20 @@ app.post('/answer', function (req, res) {
     });
 });
 
+app.get('/answer',function(req,res){
+    var select = `select * from answer`;
+    var client = new pg.Client(process.env.DATABASE_URL);
+    client.connect(function (err) {
+        if (err) throw err;
+        client.query(select, function (error, results) {
+            res.send(results.rows);
+            client.end(function (err) {
+                if (err) throw err;
+            });
+        });
+    });
+});
+
 app.get('/question-type', function (req, res) {
     var select = `select * from item where type='question_type'`;
     var client = new pg.Client(process.env.DATABASE_URL);
